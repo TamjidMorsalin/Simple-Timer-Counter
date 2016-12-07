@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<meta name="description" content="">
+			<meta name="author" content="">
+
+			<link href="css/bootstrap.min.css" rel="stylesheet">
+			<script src="js/angular.min.js"></script>
+			<!-- Bower Components -->
+			<script type="text/javascript" src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+
+			<!-- Node Modules -->
+			<link rel="stylesheet" type="text/css" href="node_modules/angular-bootstrap-colorpicker/css/colorpicker.css">
+
+			<script src="js/jquery.min.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+			<script src="js/app.js"></script>
+
+			
+    
+			<link href="css/style.css" rel="stylesheet">
+		</head>
+		<body ng-app="myApp" ng-controller="myCtrl">
+			<div class="container">
+				<div class="col-md-6">
+					<div class="row" style="padding-top: 3em">
+						<h4 style="font-weight: bold">Font Size</h4>
+						<p style="color: #999999">The counter font size in pixels unit</p>
+						<div class="col-sm-2" style="padding-left: 0px">
+							<input class="form-control" id="ex1" type="text" ng-model="fontSize" ng-change="setFontSize(fontSize)">
+						</div>
+					</div>
+					<div class="row" style="padding-top: 1.3em">
+						<h4 style="font-weight: bold">Counter Background Color</h4>
+						<p style="color: #999999">The Counter Background Color</p>
+						<div class="col-sm-2" style="width: 35px; height: 35px; border-radius: 3px" ng-style="{'background-color': button.background_color}"></div>
+			            <div class="col-sm-2" style="padding-left: 0px">
+			              	<button colorpicker type="button" colorpicker-position="top" class="btn btn-default" ng-model="button.background_color" >Select color</button>
+			            </div>
+					</div>
+					<div class="row" style="padding-top: 1.3em">
+						<h4 style="font-weight: bold">Counter Background Image</h4>
+						<p style="color: #999999">The Counter Background Image</p>
+			            <div style="height:0px;overflow:hidden">
+						   	<input type="file" id="fileInput" />
+						</div>
+						<button type="button" class="btn btn-default" ng-click="chooseFile()">Add Image</button>
+					</div>
+					<div class="row" style="padding-top: 1.3em">
+						<h4 style="font-weight: bold">Counter Color</h4>
+						<p style="color: #999999">The Counter Color</p>
+						<div class="col-sm-2" style="width: 35px; height: 35px; border-radius: 3px" ng-style="{'background-color': button.counter_color}"></div>
+			            <div class="col-sm-2" style="padding-left: 0px">
+			              	<button colorpicker type="button" colorpicker-position="top" class="btn btn-default" ng-model="button.counter_color" >Select color</button>
+			            </div>
+					</div>
+					<div class="row" style="padding-top: 1.3em">
+						<h4 style="font-weight: bold">Label Color</h4>
+						<p style="color: #999999">The Label Color</p>
+						<div class="col-sm-2" style="width: 35px; height: 35px; border-radius: 3px" ng-style="{'background-color': button.label_color}"></div>
+			            <div class="col-sm-2" style="padding-left: 0px">
+			              	<button colorpicker type="button" colorpicker-position="top" class="btn btn-default" ng-model="button.label_color" >Select color</button>
+			            </div>
+					</div>
+				</div>
+				<div class="col-md-6" style="padding-top: 12em">
+					<div class="jumbotron" style="background-color: #00e6e6;width: 42em; height: 30em">
+						<div class="row" style="padding-top: 5em" ng-style="{'padding-left':inputPaddingRow}">
+	    					<div class="col-md-2" ng-class=>
+							  <input class="form-control inputStyle" ng-style="{'background-color': button.background_color, 'color': button.counter_color, 'height': height, 'width': width, 'font-size': Size+'px'}" id="ex1" type="text" ng-model="day" ng-disabled="status">
+							  <center><p ng-style="{'color': button.label_color}" style="font-size:15px">Days</p></center>
+							</div>
+							<div class="col-md-1"></div>
+							<div class="col-md-2" >
+							  <input class="form-control inputStyle"  ng-style="{'background-color': button.background_color, 'color': button.counter_color, 'height': height, 'width': width, 'font-size': Size+'px'}" id="ex1" type="text" ng-model="hour" ng-disabled="status">
+							  <center><p ng-style="{'color': button.label_color}" style="font-size:15px">Hours</p></center>
+							</div>
+							<div class="col-md-1"></div>
+							<div class="col-md-2" >
+							  <input class="form-control inputStyle" ng-style="{'background-color': button.background_color, 'color': button.counter_color, 'height': height, 'width': width, 'font-size': Size+'px'}" id="ex1" type="text" ng-model="minute" ng-disabled="status">
+							  <center><p ng-style="{'color': button.label_color}" style="font-size:15px">Minutes</p></center>
+							</div>
+							<div class="col-md-1"></div>
+							<div class="col-md-2" >
+							  <input class="form-control inputStyle" ng-style="{'background-color': button.background_color, 'color': button.counter_color, 'height': height, 'width': width, 'font-size': Size+'px'}" id="ex1" type="text" ng-model="second" ng-disabled="status">
+							  <center><p ng-style="{'color': button.label_color}" style="font-size:15px">Seconds</p></center>
+							</div>
+						</div>						
+  					</div>
+  					<div class="row" style="padding-left:15em">
+							<button type="button" class="btn btn-default" ng-click="startTimer()" style="background-color: #006666;color: white">Start</button>
+							<button type="button" class="btn btn-default" ng-click="stopTimer()" style="background-color: #006666;color: white">Stop</button>
+							<button type="button" class="btn btn-default" ng-click="resetTimer()" style="background-color: #006666;color: white">Reset</button>
+						</div>
+				</div>
+			</div>
+		</body>
+			<script>
+				
+			</script>
+
+
+	</html>
